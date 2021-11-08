@@ -1,3 +1,5 @@
+const { getBrazilDate } = require("../utils/common/getBrazilDate");
+
 function botClearMessages(message) {
   if (
     message.content.includes(
@@ -9,7 +11,7 @@ function botClearMessages(message) {
       message.channel.messages.fetch({ limit: 100 }).then((messages) => {
         message.channel.bulkDelete(messages);
       });
-      const date = new Date();
+      const date = getBrazilDate();
       console.log(`Chat limpo às ${date.getHours()}:${date.getMinutes()}`);
     }, 60000);
   }
